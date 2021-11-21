@@ -1,0 +1,20 @@
+# repositories to statistic
+repositories:
+  - "apache/apisix"
+  - "apache/apisix-website"
+  - "apache/apisix-ingress-controller"
+  - "apache/apisix-python-plugin-runner"
+  - "apache/apisix-dashboard"
+  - "apache/apisix-go-plugin-runner"
+  - "apache/apisix-helm-chart"
+  - "apache/apisix-docker"
+  - "apache/apisix-java-plugin-runner"
+  - "apache/apisix-ingress-docker"
+  - "apache/apisix-control-plane"
+  - "apache/apisix-dashboard-built"
+
+# whether to statistic to current time, otherwise to 23:59:59 of the previous day
+to-current: false
+
+#
+github-token: ""
