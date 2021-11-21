@@ -16,5 +16,5 @@ repositories:
 # whether to statistic to current time, otherwise to 23:59:59 of the previous day
 to-current: false
 
-#
+# Github personal access token
 github-token: ""
