@@ -68,7 +68,6 @@ func GetStartTime(config Config) (time.Time, error) {
 		return time.Date(now.Year(), now.Month(), now.Day(), 0, 0,
 			0, 0, time.FixedZone("GMT", 8*3600)).AddDate(0, 0, -1*config.LastDays), nil
 	}
-	fmt.Println("bbb...")
 
 	t, err := time.Parse("2006-01-02", config.StartDate)
 	if err != nil {
