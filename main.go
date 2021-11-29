@@ -64,23 +64,28 @@ func genReport(config Config) {
 
 func GetStartTime(config Config) (time.Time, error) {
 	if config.StartDate == "" {
-		if config.LastDays == 0 {
-			config.LastDays = DefaultLastDays
-		}
-
 		now := time.Now()
 		return time.Date(now.Year(), now.Month(), now.Day(), 0, 0,
-			0, 0, time.Local).AddDate(0, 0, -1*config.LastDays), nil
+			0, 0, time.FixedZone("GMT", 8*3600)).AddDate(0, 0, -1*config.LastDays), nil
+	}
+	fmt.Println("bbb...")
+
+	t, err := time.Parse("2006-01-02", config.StartDate)
+	if err != nil {
+		return time.Time{}, err
 	}
 
-	return time.Parse("2006-01-02", config.StartDate)
+	t = time.Date(t.Year(), t.Month(), t.Day(), 0, 0,
+		0, 0, time.FixedZone("GMT", 8*3600))
+
+	return t, err
 }
 
 func GetEndTime(config Config) (time.Time, error) {
 	if config.EndDate == "" {
 		now := time.Now()
 		return time.Date(now.Year(), now.Month(), now.Day(), 23, 59,
-			59, 0, time.Local).AddDate(0, 0, -1), nil
+			59, 0, time.FixedZone("GMT", 8*3600)).AddDate(0, 0, -1), nil
 	}
 
 	t, err := time.Parse("2006-01-02", config.EndDate)
@@ -89,7 +94,7 @@ func GetEndTime(config Config) (time.Time, error) {
 	}
 
 	t = time.Date(t.Year(), t.Month(), t.Day(), 23, 59,
-		59, 0, time.Local)
+		59, 0, time.FixedZone("GMT", 8*3600))
 
 	return t, err
 }

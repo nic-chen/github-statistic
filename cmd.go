@@ -31,11 +31,16 @@ func newCommand() *cobra.Command {
 	}
 	_config = *config
 
+	defaultLastDays := _config.LastDays
+	if defaultLastDays == 0 {
+		defaultLastDays = DefaultLastDays
+	}
+
 	// config items
-	cmd.PersistentFlags().StringVar(&_config.GithubToken, "token", "", "github PAT token")
-	cmd.PersistentFlags().StringVar(&_config.StartDate, "start-date", "", "start date of statistics")
-	cmd.PersistentFlags().StringVar(&_config.EndDate, "end-date", "", "end date of statistics")
-	cmd.PersistentFlags().IntVar(&_config.LastDays, "last-days", 0, "the past days to statistic")
+	cmd.PersistentFlags().StringVar(&_config.GithubToken, "token", _config.GithubToken, "github PAT token")
+	cmd.PersistentFlags().StringVar(&_config.StartDate, "start-date", _config.StartDate, "start date of statistics")
+	cmd.PersistentFlags().StringVar(&_config.EndDate, "end-date", _config.EndDate, "end date of statistics")
+	cmd.PersistentFlags().IntVar(&_config.LastDays, "last-days", defaultLastDays, "the past days to statistic")
 	cmd.PersistentFlags().BoolVar(&_config.ToCurrent, "to-current", false, "whether to statistic to current time, otherwise to 23:59:59 of the previous day")
 	cmd.PersistentFlags().StringArrayVar(&_config.Repositories, "repositories", config.Repositories, "repositories to statistic")
 
