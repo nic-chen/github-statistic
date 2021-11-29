@@ -1,4 +1,4 @@
-module github.com/api7/github-statistic
+module github.com/nic-chen/github-statistic
 
 go 1.16
 

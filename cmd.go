@@ -32,9 +32,9 @@ func newCommand() *cobra.Command {
 	_config = *config
 
 	// config items
-	cmd.PersistentFlags().StringVar(&_config.StartTime, "start-time", "", "start time of statistics")
-	cmd.PersistentFlags().StringVar(&_config.EndTime, "end-time", "", "end time of statistics")
-	cmd.PersistentFlags().IntVar(&_config.LastDays, "last-days", 14, "the past days to statistic")
+	cmd.PersistentFlags().StringVar(&_config.StartDate, "start-date", "", "start date of statistics")
+	cmd.PersistentFlags().StringVar(&_config.EndDate, "end-date", "", "end date of statistics")
+	cmd.PersistentFlags().IntVar(&_config.LastDays, "last-days", 0, "the past days to statistic")
 	cmd.PersistentFlags().BoolVar(&_config.ToCurrent, "to-current", false, "whether to statistic to current time, otherwise to 23:59:59 of the previous day")
 	cmd.PersistentFlags().StringArrayVar(&_config.Repositories, "repositories", config.Repositories, "repositories to statistic")
 

@@ -6,15 +6,18 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-const version = "0.1.0"
+const (
+	version         = "0.1.0"
+	DefaultLastDays = 15
+)
 
 // Config is the structured configuration for cloud-console.yaml.
 type Config struct {
 	GithubToken string `json:"github-token" yaml:"github-token"`
-	// StartTime is start time of statistics.
-	StartTime string `json:"start-date" yaml:"start-date"`
-	// StartTime is end time of statistics.
-	EndTime string `json:"end-date" yaml:"end-date"`
+	// StartDate is start time of statistics.
+	StartDate string `json:"start-date" yaml:"start-date"`
+	// EndDate is end time of statistics.
+	EndDate string `json:"end-date" yaml:"end-date"`
 
 	// LastDays is the past days to statistic.
 	LastDays int `json:"last-days" yaml:"last-days"`

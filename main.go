@@ -63,23 +63,27 @@ func genReport(config Config) {
 }
 
 func GetStartTime(config Config) (time.Time, error) {
-	if config.LastDays > 0 || config.StartTime == "" {
+	if config.StartDate == "" {
+		if config.LastDays == 0 {
+			config.LastDays = DefaultLastDays
+		}
+
 		now := time.Now()
 		return time.Date(now.Year(), now.Month(), now.Day(), 0, 0,
 			0, 0, time.Local).AddDate(0, 0, -1*config.LastDays), nil
 	}
 
-	return time.Parse("2006-01-02", config.StartTime)
+	return time.Parse("2006-01-02", config.StartDate)
 }
 
 func GetEndTime(config Config) (time.Time, error) {
-	if config.LastDays > 0 || config.EndTime == "" {
+	if config.EndDate == "" {
 		now := time.Now()
 		return time.Date(now.Year(), now.Month(), now.Day(), 23, 59,
 			59, 0, time.Local).AddDate(0, 0, -1), nil
 	}
 
-	t, err := time.Parse("2006-01-02", config.EndTime)
+	t, err := time.Parse("2006-01-02", config.EndDate)
 	if err != nil {
 		return time.Time{}, err
 	}
