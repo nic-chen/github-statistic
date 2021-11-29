@@ -1,0 +1,17 @@
+name: generate-report
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-18.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: generate report
+        run: |
+          go run . --token=${{ secrets.PAT }}

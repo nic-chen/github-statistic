@@ -32,6 +32,7 @@ func newCommand() *cobra.Command {
 	_config = *config
 
 	// config items
+	cmd.PersistentFlags().StringVar(&_config.GithubToken, "token", "", "github PAT token")
 	cmd.PersistentFlags().StringVar(&_config.StartDate, "start-date", "", "start date of statistics")
 	cmd.PersistentFlags().StringVar(&_config.EndDate, "end-date", "", "end date of statistics")
 	cmd.PersistentFlags().IntVar(&_config.LastDays, "last-days", 0, "the past days to statistic")
