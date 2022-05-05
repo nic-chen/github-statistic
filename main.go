@@ -162,7 +162,15 @@ func counting(ctx context.Context, ghCli *github.Client, repoName string, listOp
 	}
 
 	for _, commit := range commits {
-		login := *commit.Author.Login
+		var login string
+		if commit.Author != nil {
+			login = *commit.Author.Login
+		} else {
+			if commit.Committer != nil {
+				login = *commit.Committer.Login
+			}
+		}
+
 		if _, ok := res[login]; ok {
 			res[login] = res[login] + 1
 		} else {
