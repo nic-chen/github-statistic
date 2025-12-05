@@ -19,6 +19,6 @@ to-current: false
 # Github personal access token
 github-token: ""
 
-start-date: "2025-10-01"
+start-date: "2025-11-01"
 
-end-date: "2025-10-31"
+end-date: "2025-11-30"
